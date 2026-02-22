@@ -3,83 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universal Resume Builder</title>
+    <title>ProResume | PDF & Image Builder</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 </head>
 <body>
 
-    <div class="app-wrapper">
-        <header class="no-print">
-            <h1>Resume Builder (Created by Sathish)</h1>
-            <p>Fill details or leave blank to omit sections. Use <b>",,"</b> for bullets.</p>
+    <div class="app-container no-print-area">
+        <header>
+            <h1>ProResume Builder ( Created By Sathish)</h1>
+            <p>Empty fields are automatically excluded. Use <b>",,"</b> for bullets.</p>
         </header>
 
-        <form id="resume-form" class="config-card no-print">
-            <div class="color-picker">
-                <label>Theme Color:</label>
-                <input type="color" id="theme-color" value="#1a365d">
+        <form id="resume-form" class="card">
+            <div class="settings">
+                <label>Accent Color:</label>
+                <input type="color" id="theme-color" value="#1e293b">
             </div>
 
-            <section class="input-group">
-                <h3>Contact Details</h3>
-                <div class="flex-row">
+            <section class="form-section">
+                <h3>Contact Information</h3>
+                <div class="responsive-grid">
                     <input type="text" id="name" placeholder="Full Name">
                     <input type="file" id="photo" accept="image/*">
-                </div>
-                <div class="flex-row">
-                    <input type="email" id="email" placeholder="Email">
-                    <input type="tel" id="phone" placeholder="Phone">
-                </div>
-                <div class="flex-row">
+                    <input type="email" id="email" placeholder="Email Address">
+                    <input type="tel" id="phone" placeholder="Phone Number">
                     <input type="url" id="linkedin" placeholder="LinkedIn URL">
                     <input type="url" id="github" placeholder="GitHub URL">
                 </div>
             </section>
 
-            <section class="input-group">
-                <h3>Objective & Experience</h3>
-                <textarea id="objective" rows="2" placeholder="Professional Summary"></textarea>
-                <textarea id="experience" rows="4" placeholder="Work Experience (Use ,, for bullets)"></textarea>
-            </section>
-
-            <section class="input-group">
-                <h3>Education & Courses</h3>
-                <div class="flex-row">
-                    <textarea id="education" rows="3" placeholder="Education Details"></textarea>
-                    <textarea id="courses" rows="3" placeholder="Courses & Certs"></textarea>
+            <section class="form-section">
+                <h3>Experience & Education</h3>
+                <div class="responsive-grid">
+                    <textarea id="experience" rows="4" placeholder="Experience (Use ,, for bullets)"></textarea>
+                    <textarea id="education" rows="4" placeholder="Education (Use ,, for bullets)"></textarea>
                 </div>
             </section>
 
-            <section class="input-group">
-                <h3>Projects</h3>
-                <div id="project-entries">
-                    <div class="proj-item">
+            <section class="form-section">
+                <h3>Dynamic Projects</h3>
+                <div id="project-list">
+                    <div class="project-item">
                         <input type="text" class="p-title" placeholder="Project Name">
-                        <textarea class="p-desc" rows="2" placeholder="Description (Use ,, for bullets)"></textarea>
+                        <textarea class="p-desc" rows="2" placeholder="Project Details (Use ,, for bullets)"></textarea>
                     </div>
                 </div>
-                <button type="button" id="add-proj" class="btn-alt">+ Add Project</button>
+                <button type="button" id="add-proj" class="btn-secondary">+ Add Project</button>
             </section>
 
-            <section class="input-group">
+            <section class="form-section">
                 <h3>Skills & Achievements</h3>
-                <div class="flex-row">
+                <div class="responsive-grid">
                     <input type="text" id="skills" placeholder="Skills (comma separated)">
                     <input type="text" id="achievements" placeholder="Achievements (Use ,, for bullets)">
                 </div>
             </section>
 
-            <button type="submit" class="btn-main">Preview Resume</button>
+            <button type="submit" class="btn-primary">Generate Preview</button>
         </form>
 
-        <div id="preview-area" class="hidden">
-            <div class="controls no-print">
-                <button id="edit-btn" class="btn-alt">Edit Info</button>
-                <button id="download-btn" class="btn-main">Download PDF</button>
+        <div id="preview-modal" class="hidden">
+            <div class="action-bar">
+                <button id="edit-btn" class="btn-secondary">Edit Info</button>
+                <div class="download-group">
+                    <button id="download-png" class="btn-primary" style="background: #10b981;">Download PNG</button>
+                    <button id="download-pdf" class="btn-primary">Download PDF</button>
+                </div>
             </div>
-            <div id="resume-render" class="resume-paper"></div>
+            <div id="resume-render" class="resume-sheet"></div>
         </div>
     </div>
 
