@@ -1,24 +1,25 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Builder (Created By Sathish)</title>
+    <title>Resume Builder</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-    <div class="container">
-        <header class="no-print">
-            <h1>Advanced Resume Builder</h1>
-            <p>Fill the details below. Use <strong>",,"</strong> for bullet points.</p>
+    <div class="container no-print-area">
+        <header>
+            <h1>Resume Builder (Created By Sathish)</h1>
+            <p>Fill details to generate. Use <b>",,"</b> for bullet points.</p>
         </header>
 
         <form id="resume-form" class="card">
             <div class="theme-bar">
-                <label>Accent Color:</label>
+                <label>Theme Color:</label>
                 <input type="color" id="theme-color" value="#1e293b">
             </div>
 
@@ -29,68 +30,73 @@
                     <input type="file" id="photo" accept="image/*">
                 </div>
                 <div class="grid-row">
-                    <input type="email" id="email" placeholder="Email Address *" required>
-                    <input type="tel" id="phone" placeholder="Phone Number *" required>
+                    <input type="email" id="email" placeholder="Email *" required>
+                    <input type="tel" id="phone" placeholder="Phone *" required>
                 </div>
                 <div class="grid-row">
-                    <input type="url" id="linkedin" placeholder="LinkedIn URL (clickable)">
-                    <input type="url" id="github" placeholder="GitHub URL (clickable)">
+                    <input type="url" id="linkedin" placeholder="LinkedIn URL">
+                    <input type="url" id="github" placeholder="GitHub URL">
                 </div>
             </section>
 
             <section>
-                <h3>Career Objective</h3>
-                <textarea id="objective" rows="2" placeholder="Tell us about your professional goal..."></textarea>
+                <h3>Objective</h3>
+                <textarea id="objective" rows="2" placeholder="Career Objective..."></textarea>
             </section>
+
+            <div class="grid-row">
+                <section>
+                    <h3>Education</h3>
+                    <textarea id="education" rows="4" placeholder="School/University details (Use ,, for bullets)"></textarea>
+                </section>
+                <section>
+                    <h3>Experience / Internships</h3>
+                    <textarea id="experience" rows="4" placeholder="Job details (Use ,, for bullets)"></textarea>
+                </section>
+            </div>
+
+            <div class="grid-row">
+                <section>
+                    <h3>Courses</h3>
+                    <textarea id="courses" rows="3" placeholder="Certifications or Courses"></textarea>
+                </section>
+                <section>
+                    <h3>Achievements</h3>
+                    <textarea id="achievements" rows="3" placeholder="Awards or Honors"></textarea>
+                </section>
+            </div>
 
             <section id="projects-section">
                 <h3>Projects</h3>
                 <div id="projects-container">
                     <div class="dynamic-entry">
                         <input type="text" class="proj-title" placeholder="Project Title">
-                        <textarea class="proj-desc" rows="2" placeholder="Details (use ,, for bullets)"></textarea>
+                        <textarea class="proj-desc" rows="2" placeholder="Project Description (Use ,, for bullets)"></textarea>
                     </div>
                 </div>
-                <button type="button" id="add-project" class="btn-add">+ Add Project</button>
-            </section>
-
-            <div class="grid-row">
-                <section>
-                    <h3>Education</h3>
-                    <textarea id="education" rows="3" placeholder="University, Degree, Year"></textarea>
-                </section>
-                <section>
-                    <h3>Courses</h3>
-                    <textarea id="courses" rows="3" placeholder="Specialized Courses"></textarea>
-                </section>
-            </div>
-
-            <section>
-                <h3>Achievements</h3>
-                <textarea id="achievements" rows="3" placeholder="Honors & Awards (use ,, for bullets)"></textarea>
+                <button type="button" id="add-project" class="btn-add">+ Add Another Project</button>
             </section>
 
             <div class="grid-row">
                 <section>
                     <h3>Skills</h3>
-                    <input type="text" id="skills" placeholder="Java, Python, React (comma separated)">
+                    <input type="text" id="skills" placeholder="Java, Python, etc.">
                 </section>
                 <section>
                     <h3>Interests</h3>
-                    <input type="text" id="interests" placeholder="Music, Traveling, Chess">
+                    <input type="text" id="interests" placeholder="Hobbies">
                 </section>
             </div>
 
-            <button type="submit" class="btn-primary">Generate My Resume</button>
+            <button type="submit" class="btn-primary">Generate Resume</button>
         </form>
 
         <div id="resume-preview" class="hidden">
-            <div class="preview-controls no-print">
-                <button id="edit-btn" class="btn-secondary">Back to Edit</button>
+            <div class="preview-controls">
+                <button id="edit-btn" class="btn-secondary">Edit Details</button>
                 <button id="download-btn" class="btn-primary">Download PDF</button>
             </div>
-            <div id="resume-output" class="resume-sheet">
-                </div>
+            <div id="resume-output" class="resume-sheet"></div>
         </div>
     </div>
 
