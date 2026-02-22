@@ -1,80 +1,31 @@
-:root {
-    --primary: #1e293b;
-    --bg-body: #f1f5f9;
-    --card-bg: #ffffff;
-    --border: #e2e8f0;
-}
-
+:root { --primary: #1a365d; --text: #2d3748; --bg: #f7fafc; }
 * { box-sizing: border-box; }
 
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--bg-body);
-    margin: 0;
-    padding: 1rem;
-    color: var(--primary);
-}
+body { font-family: 'Inter', sans-serif; background: #edf2f7; margin: 0; padding: 15px; color: var(--text); }
+.app-wrapper { max-width: 850px; margin: 0 auto; }
 
-.app-container { max-width: 900px; margin: 0 auto; }
+.config-card { background: white; padding: 25px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
 
-.main-card {
-    background: var(--card-bg);
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
-}
+.flex-row { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 12px; }
+.flex-row > * { flex: 1; min-width: 250px; }
 
-h1 { text-align: center; margin-bottom: 0.5rem; }
-p { text-align: center; color: #64748b; margin-bottom: 2rem; }
+input, textarea { width: 100%; padding: 12px; border: 1px solid #e2e8f0; border-radius: 8px; font-size: 14px; outline: none; transition: 0.2s; }
+input:focus { border-color: var(--primary); }
 
-h3 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin-top: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: 5px; }
+.btn-main { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: 700; margin-top: 20px; }
+.btn-alt { background: white; border: 1.5px solid var(--primary); color: var(--primary); padding: 10px; border-radius: 8px; cursor: pointer; width: 100%; margin: 10px 0; }
 
-/* Grid for forms */
-.responsive-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-    margin-bottom: 1rem;
-}
+/* PDF A4 ALIGNMENT */
+.resume-paper { background: white; padding: 0.5in; min-height: 10.5in; color: #1a202c; font-size: 12px; line-height: 1.6; }
+.res-header { display: flex; align-items: center; border-bottom: 3px solid var(--primary); padding-bottom: 15px; margin-bottom: 20px; }
+.res-photo { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; margin-right: 20px; border: 2px solid var(--primary); }
 
-input, textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    font-size: 14px;
-    outline: none;
-}
+.res-title { font-weight: 800; border-bottom: 2px solid var(--primary); margin: 15px 0 8px; display: inline-block; text-transform: uppercase; font-size: 13px; }
 
-input:focus, textarea:focus { border-color: var(--primary); }
-
-.btn-primary { background: var(--primary); color: white; border: none; padding: 1rem; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 700; font-size: 1rem; margin-top: 1rem; }
-.btn-outline { background: transparent; border: 1.5px solid var(--primary); color: var(--primary); padding: 0.6rem; border-radius: 6px; cursor: pointer; width: 100%; margin: 0.5rem 0; font-weight: 600; }
-
-/* RESUME SHEET */
-.resume-sheet {
-    background: white;
-    padding: 0.5in;
-    min-height: 10.5in;
-    color: #1a202c;
-    line-height: 1.5;
-    font-size: 12px;
-}
-
-.res-header { display: flex; flex-wrap: wrap; align-items: center; border-bottom: 3px solid var(--primary); padding-bottom: 1rem; margin-bottom: 1.5rem; }
-.res-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; margin-right: 1.5rem; border: 2px solid var(--primary); }
-
-.res-section-header { font-weight: 800; border-bottom: 2px solid var(--primary); margin: 1.2rem 0 0.5rem; display: inline-block; padding-bottom: 2px; text-transform: uppercase; font-size: 13px; }
-
-.res-grid-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; }
-
-.res-box { border-left: 3px solid var(--primary); background: #f8fafc; padding: 0.75rem 1rem; margin: 0.5rem 0; border-radius: 0 8px 8px 0; page-break-inside: avoid; }
-.res-bullets { margin: 5px 0; padding-left: 1rem; }
+.res-quote { border-left: 3px solid var(--primary); background: #f8fafc; padding: 10px 15px; margin: 8px 0; border-radius: 0 8px 8px 0; page-break-inside: avoid; }
+.res-bullets { margin: 5px 0; padding-left: 15px; }
 
 .hidden { display: none; }
-.action-bar { display: flex; gap: 1rem; margin-bottom: 1rem; }
+.controls { display: flex; gap: 10px; margin-bottom: 20px; }
 
-/* Mobile Adjustment for PDF */
-@media (max-width: 600px) {
-    .resume-sheet { padding: 0.2in; }
-}
+@media (max-width: 600px) { .resume-paper { padding: 0.3in; } .res-header { flex-direction: column; text-align: center; } .res-photo { margin: 0 0 15px 0; } }
