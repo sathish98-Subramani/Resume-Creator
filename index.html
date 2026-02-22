@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProResume Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Resume Builder (Created by Sathish)</h1>
+            <p>Create a professional resume in minutes.</p>
+        </header>
+
+        <form id="resume-form" class="card">
+            <h2>Personal Information</h2>
+            <div class="grid-row">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Profile Photo</label>
+                    <input type="file" id="photo" accept="image/*">
+                </div>
+            </div>
+
+            <div class="grid-row">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" placeholder="john@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" id="phone" placeholder="+1 234 567 890" required>
+                </div>
+            </div>
+
+            <div class="grid-row">
+                <div class="form-group">
+                    <label>LinkedIn</label>
+                    <input type="url" id="linkedin" placeholder="linkedin.com/in/username">
+                </div>
+                <div class="form-group">
+                    <label>GitHub</label>
+                    <input type="url" id="github" placeholder="github.com/username">
+                </div>
+            </div>
+
+            <hr>
+            <h2>Professional Details</h2>
+            <div class="form-group">
+                <label>Career Objective</label>
+                <textarea id="objective" rows="3" placeholder="Describe your career goals..." required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Skills (Comma separated)</label>
+                <input type="text" id="skills" placeholder="JavaScript, Python, UI Design" required>
+            </div>
+
+            <div id="projects-container">
+                <div class="project-entry">
+                    <label>Project 1 Title</label>
+                    <input type="text" class="proj-title" placeholder="E-commerce App">
+                    <label>Description</label>
+                    <textarea class="proj-desc" rows="2" placeholder="Built using React and Firebase..."></textarea>
+                </div>
+            </div>
+            <button type="button" id="add-project" class="btn-secondary">+ Add Another Project</button>
+
+            <div class="grid-row">
+                <div class="form-group">
+                    <label>Education</label>
+                    <textarea id="education" rows="3" placeholder="University Name, Degree, Year" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Certifications</label>
+                    <textarea id="certs" rows="3" placeholder="AWS Cloud, Meta Frontend..."></textarea>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Languages Known</label>
+                <input type="text" id="languages" placeholder="English, Spanish, French">
+            </div>
+
+            <button type="submit" class="btn-primary">Generate Resume</button>
+        </form>
+
+        <div id="resume-preview" class="hidden">
+            <div class="preview-controls">
+                <button id="edit-btn" class="btn-secondary">Edit Information</button>
+                <button id="download-btn" class="btn-primary">Download as PDF</button>
+            </div>
+            
+            <div id="resume-output" class="resume-sheet">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
