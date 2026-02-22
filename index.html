@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProResume Builder (Created By Sathish)</title>
+    <title>Resume Builder (Created By Sathish)</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
@@ -12,49 +12,43 @@
 
     <div class="container">
         <header class="no-print">
-            <h1>Resume Builder Pro</h1>
-            <p>Generate a professional, multi-page compatible resume.</p>
+            <h1>Advanced Resume Builder</h1>
+            <p>Fill the details below. Use <strong>",,"</strong> for bullet points.</p>
         </header>
 
         <form id="resume-form" class="card">
-            <div class="theme-selector">
-                <label>Select Theme Color: </label>
-                <input type="color" id="theme-color" value="#2563eb">
+            <div class="theme-bar">
+                <label>Accent Color:</label>
+                <input type="color" id="theme-color" value="#1e293b">
             </div>
 
             <section>
-                <h2>Personal Details</h2>
+                <h3>Personal Information</h3>
                 <div class="grid-row">
-                    <div class="form-group">
-                        <label>Full Name</label>
-                        <input type="text" id="name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label>Profile Photo</label>
-                        <input type="file" id="photo" accept="image/*">
-                    </div>
+                    <input type="text" id="name" placeholder="Full Name *" required>
+                    <input type="file" id="photo" accept="image/*">
                 </div>
                 <div class="grid-row">
-                    <input type="email" id="email" placeholder="Email" required>
-                    <input type="tel" id="phone" placeholder="Phone" required>
+                    <input type="email" id="email" placeholder="Email Address *" required>
+                    <input type="tel" id="phone" placeholder="Phone Number *" required>
                 </div>
                 <div class="grid-row">
-                    <input type="url" id="linkedin" placeholder="LinkedIn URL">
-                    <input type="url" id="github" placeholder="GitHub URL">
+                    <input type="url" id="linkedin" placeholder="LinkedIn URL (clickable)">
+                    <input type="url" id="github" placeholder="GitHub URL (clickable)">
                 </div>
             </section>
 
             <section>
-                <h2>Career Objective</h2>
-                <textarea id="objective" rows="2" placeholder="Describe your goals..." required></textarea>
+                <h3>Career Objective</h3>
+                <textarea id="objective" rows="2" placeholder="Tell us about your professional goal..."></textarea>
             </section>
 
             <section id="projects-section">
-                <h2>Projects</h2>
+                <h3>Projects</h3>
                 <div id="projects-container">
                     <div class="dynamic-entry">
                         <input type="text" class="proj-title" placeholder="Project Title">
-                        <textarea class="proj-desc" rows="2" placeholder="Description..."></textarea>
+                        <textarea class="proj-desc" rows="2" placeholder="Details (use ,, for bullets)"></textarea>
                     </div>
                 </div>
                 <button type="button" id="add-project" class="btn-add">+ Add Project</button>
@@ -62,40 +56,41 @@
 
             <div class="grid-row">
                 <section>
-                    <h2>Education</h2>
-                    <textarea id="education" rows="4" placeholder="University, Degree, Year" required></textarea>
+                    <h3>Education</h3>
+                    <textarea id="education" rows="3" placeholder="University, Degree, Year"></textarea>
                 </section>
                 <section>
-                    <h2>Courses</h2>
-                    <textarea id="courses" rows="4" placeholder="List relevant courses..."></textarea>
+                    <h3>Courses</h3>
+                    <textarea id="courses" rows="3" placeholder="Specialized Courses"></textarea>
                 </section>
             </div>
 
             <section>
-                <h2>Achievements</h2>
-                <textarea id="achievements" rows="3" placeholder="Awards, competitions, etc."></textarea>
+                <h3>Achievements</h3>
+                <textarea id="achievements" rows="3" placeholder="Honors & Awards (use ,, for bullets)"></textarea>
             </section>
 
             <div class="grid-row">
                 <section>
-                    <h2>Skills (Comma separated)</h2>
-                    <input type="text" id="skills" placeholder="Java, SQL, UX Design" required>
+                    <h3>Skills</h3>
+                    <input type="text" id="skills" placeholder="Java, Python, React (comma separated)">
                 </section>
                 <section>
-                    <h2>Interests</h2>
-                    <input type="text" id="interests" placeholder="Chess, Photography, Travel">
+                    <h3>Interests</h3>
+                    <input type="text" id="interests" placeholder="Music, Traveling, Chess">
                 </section>
             </div>
 
-            <button type="submit" class="btn-primary">Generate Resume</button>
+            <button type="submit" class="btn-primary">Generate My Resume</button>
         </form>
 
         <div id="resume-preview" class="hidden">
-            <div class="preview-header">
-                <button id="edit-btn" class="btn-secondary">Edit Info</button>
+            <div class="preview-controls no-print">
+                <button id="edit-btn" class="btn-secondary">Back to Edit</button>
                 <button id="download-btn" class="btn-primary">Download PDF</button>
             </div>
-            <div id="resume-output" class="resume-sheet"></div>
+            <div id="resume-output" class="resume-sheet">
+                </div>
         </div>
     </div>
 
