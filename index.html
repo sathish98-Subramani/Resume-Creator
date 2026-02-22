@@ -1,102 +1,94 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume Builder</title>
+    <title>Resume Creator</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
 
-    <div class="container no-print-area">
-        <header>
-            <h1>Resume Builder (Created By Sathish)</h1>
-            <p>Fill details to generate. Use <b>",,"</b> for bullet points.</p>
+    <div class="app-container">
+        <header class="form-header no-print">
+            <h1>ProResume Builder(Created by Sathish)</h1>
+            <p>Fill in the details. Use <b>",,"</b> for vertical bullet points.</p>
         </header>
 
-        <form id="resume-form" class="card">
-            <div class="theme-bar">
-                <label>Theme Color:</label>
+        <form id="resume-form" class="main-card no-print">
+            <div class="settings-panel">
+                <label>Theme Accent:</label>
                 <input type="color" id="theme-color" value="#1e293b">
             </div>
 
-            <section>
+            <div class="form-group">
                 <h3>Personal Information</h3>
-                <div class="grid-row">
+                <div class="responsive-grid">
                     <input type="text" id="name" placeholder="Full Name *" required>
-                    <input type="file" id="photo" accept="image/*">
+                    <div class="file-input-wrapper">
+                        <label for="photo">Profile Photo</label>
+                        <input type="file" id="photo" accept="image/*">
+                    </div>
                 </div>
-                <div class="grid-row">
-                    <input type="email" id="email" placeholder="Email *" required>
-                    <input type="tel" id="phone" placeholder="Phone *" required>
+                <div class="responsive-grid">
+                    <input type="email" id="email" placeholder="Email Address *" required>
+                    <input type="tel" id="phone" placeholder="Phone Number *" required>
                 </div>
-                <div class="grid-row">
+                <div class="responsive-grid">
                     <input type="url" id="linkedin" placeholder="LinkedIn URL">
                     <input type="url" id="github" placeholder="GitHub URL">
                 </div>
-            </section>
+            </div>
 
-            <section>
-                <h3>Objective</h3>
-                <textarea id="objective" rows="2" placeholder="Career Objective..."></textarea>
-            </section>
+            <div class="form-group">
+                <h3>Professional Summary</h3>
+                <textarea id="objective" rows="2" placeholder="Write your career objective..."></textarea>
+            </div>
 
-            <div class="grid-row">
-                <section>
+            <div class="responsive-grid">
+                <div class="form-group">
+                    <h3>Experience</h3>
+                    <textarea id="experience" rows="4" placeholder="Role, Company, Dates,, Responsibility 1,, Responsibility 2"></textarea>
+                </div>
+                <div class="form-group">
                     <h3>Education</h3>
-                    <textarea id="education" rows="4" placeholder="School/University details (Use ,, for bullets)"></textarea>
-                </section>
-                <section>
-                    <h3>Experience / Internships</h3>
-                    <textarea id="experience" rows="4" placeholder="Job details (Use ,, for bullets)"></textarea>
-                </section>
+                    <textarea id="education" rows="4" placeholder="Degree, University, Year,, CGPA/Percentage"></textarea>
+                </div>
             </div>
 
-            <div class="grid-row">
-                <section>
-                    <h3>Courses</h3>
-                    <textarea id="courses" rows="3" placeholder="Certifications or Courses"></textarea>
-                </section>
-                <section>
-                    <h3>Achievements</h3>
-                    <textarea id="achievements" rows="3" placeholder="Awards or Honors"></textarea>
-                </section>
-            </div>
-
-            <section id="projects-section">
+            <div class="form-group">
                 <h3>Projects</h3>
-                <div id="projects-container">
-                    <div class="dynamic-entry">
-                        <input type="text" class="proj-title" placeholder="Project Title">
-                        <textarea class="proj-desc" rows="2" placeholder="Project Description (Use ,, for bullets)"></textarea>
+                <div id="projects-list">
+                    <div class="project-entry card-inner">
+                        <input type="text" class="p-title" placeholder="Project Title">
+                        <textarea class="p-desc" rows="2" placeholder="Technologies & Description (Use ,, for bullets)"></textarea>
                     </div>
                 </div>
-                <button type="button" id="add-project" class="btn-add">+ Add Another Project</button>
-            </section>
-
-            <div class="grid-row">
-                <section>
-                    <h3>Skills</h3>
-                    <input type="text" id="skills" placeholder="Java, Python, etc.">
-                </section>
-                <section>
-                    <h3>Interests</h3>
-                    <input type="text" id="interests" placeholder="Hobbies">
-                </section>
+                <button type="button" id="add-proj-btn" class="btn-outline">+ Add Project</button>
             </div>
 
-            <button type="submit" class="btn-primary">Generate Resume</button>
+            <div class="responsive-grid">
+                <div class="form-group">
+                    <h3>Technical Skills</h3>
+                    <input type="text" id="skills" placeholder="Skills (comma separated)">
+                </div>
+                <div class="form-group">
+                    <h3>Achievements / Interests</h3>
+                    <input type="text" id="achievements" placeholder="Awards or Hobbies">
+                </div>
+            </div>
+
+            <button type="submit" class="btn-primary">Generate Preview</button>
         </form>
 
-        <div id="resume-preview" class="hidden">
-            <div class="preview-controls">
-                <button id="edit-btn" class="btn-secondary">Edit Details</button>
+        <div id="preview-section" class="hidden">
+            <div class="action-bar">
+                <button id="edit-btn" class="btn-outline">Edit Info</button>
                 <button id="download-btn" class="btn-primary">Download PDF</button>
             </div>
-            <div id="resume-output" class="resume-sheet"></div>
+            <div id="resume-output" class="resume-sheet">
+                </div>
         </div>
     </div>
 
